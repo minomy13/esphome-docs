@@ -25,9 +25,10 @@ sensors with ESPHome.
 
 .. _Adafruit: https://www.adafruit.com/product/385
 
-The DHT22 and DHT11 require external pull up resistors on the data line. To do this, solder
-a resistor with *about* 4.7kΩ (anything in the range from 1kΩ to 10kΩ probably works fine, but
-if you're having issues try the 4.7kΩ recommended by the manufacturer) between ``DATA`` and ``3.3V``.
+The DHT22 and DHT11 require external pull-up resistors on the data line. By default, the internal pull-up resistor of the microcontroller
+is enabled. If you want to use an external one, solder a resistor with *approximately* 4.7kΩ (anything in the range of 1kΩ to 10kΩ will probably work, but
+if you're having issues, try the 4.7kΩ recommended by the manufacturer) between ``DATA`` and ``3.3V``.
+Then, disable the internal resistor with ``use_internal_pullup: false``.
 
 .. figure:: images/temperature-humidity.png
     :align: center
@@ -63,6 +64,7 @@ Configuration variables:
   and helps with some connection issues. Defaults to ``AUTO_DETECT``.  Auto detection doesn't work for the SI7021 chip.
 - **update_interval** (*Optional*, :ref:`config-time`): The interval to check the
   sensor. Defaults to ``60s``.
+- **use_internal_pullup** (*Optional*, bool): Controls the internal pull-up resistor of the microcontroller on the data line. Defaults to ``true``.
 
 .. note::
 
